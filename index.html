@@ -14,11 +14,6 @@
             background: linear-gradient(to bottom, #030712 0%, rgba(0, 0, 0, 0) 100%);
         }
 
-        .gradient-underline {
-            position: relative;
-            text-decoration: none;
-        }
-
         .gradient-underline::after {
             content: '';
             position: absolute;
@@ -27,8 +22,13 @@
             bottom: 0;
             height: 3px;
             border-radius: 4px;
-            background: linear-gradient(to right, #06b6d4, #7e22ce);
+            background: linear-gradient(to right, #6B6B6D, #57AAEF);
             z-index: -1;
+            transition: transform 0.3s ease;
+        }
+
+        .gradient-underline:hover::after {
+            transform: scaleX(1.2);
         }
 
         .video-fade::after {
@@ -40,34 +40,46 @@
             height: 20%;
             background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #030712 100%);
         }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
+        }
     </style>
 </head>
 
 <body class="bg-gray-950 text-white font-sans">
     <header class="relative h-screen flex justify-center items-center px-4 lg:px-8">
         <div class="video-fade">
-            <video autoplay loop muted disablepictureinpicture disableremoteplayback src="resources/background.webm" class="absolute inset-0 w-full h-full object-cover" aria-hidden="true"></video>
+            <video autoplay loop muted disablepictureinpicture disableremoteplayback src="resources/background.webm" class="absolute inset-0 w-full h-full object-cover opacity-90 transition-opacity duration-500 ease-in-out hover:opacity-75" aria-hidden="true"></video>
         </div>
-        <aside class="relative z-10 text-center space-y-4">
-            <img src="resources/profile.webp" alt="Foto de Miguel Márquez Blasco" class="w-48 h-48 rounded-full mx-auto">
-            <h1 class="text-4xl font-bold">
+        <aside class="relative z-10 text-center space-y-4 animate__animated animate__fadeIn">
+            <img src="resources/profile.webp" alt="Foto de Miguel Márquez Blasco" class="rounded-full mx-auto transition-transform transform hover:scale-110" width="175" height="175">
+            <h1 class="text-4xl font-bold gradient-underline relative inline-block">
                 Hola! Soy <span class="gradient-underline">Miguel</span>
             </h1>
             <p class="text-lg opacity-60">+5 años de experiencia como desarrollador full-stack</p>
-            <ul class="flex flex-wrap justify-center gap-4">
-                <li class="flex items-center space-x-2 bg-cyan-500/25 text-center px-4 py-2 rounded-full">
+            <ul class="flex flex-wrap justify-center gap-4 pt-6 max-w-2xl">
+                <li class="flex items-center space-x-2 bg-sky-400/25 text-center px-4 py-2 rounded-full transition-transform transform hover:scale-105 hover:bg-sky-500/50">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48">
                         <path fill="#80deea" d="M24,34C11.1,34,1,29.6,1,24c0-5.6,10.1-10,23-10c12.9,0,23,4.4,23,10C47,29.6,36.9,34,24,34z M24,16	c-12.6,0-21,4.1-21,8c0,3.9,8.4,8,21,8s21-4.1,21-8C45,20.1,36.6,16,24,16z"></path><path fill="#80deea" d="M15.1,44.6c-1,0-1.8-0.2-2.6-0.7C7.6,41.1,8.9,30.2,15.3,19l0,0c3-5.2,6.7-9.6,10.3-12.4c3.9-3,7.4-3.9,9.8-2.5	c2.5,1.4,3.4,4.9,2.8,9.8c-0.6,4.6-2.6,10-5.6,15.2c-3,5.2-6.7,9.6-10.3,12.4C19.7,43.5,17.2,44.6,15.1,44.6z M32.9,5.4	c-1.6,0-3.7,0.9-6,2.7c-3.4,2.7-6.9,6.9-9.8,11.9l0,0c-6.3,10.9-6.9,20.3-3.6,22.2c1.7,1,4.5,0.1,7.6-2.3c3.4-2.7,6.9-6.9,9.8-11.9	c2.9-5,4.8-10.1,5.4-14.4c0.5-4-0.1-6.8-1.8-7.8C34,5.6,33.5,5.4,32.9,5.4z"></path><path fill="#80deea" d="M33,44.6c-5,0-12.2-6.1-17.6-15.6C8.9,17.8,7.6,6.9,12.5,4.1l0,0C17.4,1.3,26.2,7.8,32.7,19	c3,5.2,5,10.6,5.6,15.2c0.7,4.9-0.3,8.3-2.8,9.8C34.7,44.4,33.9,44.6,33,44.6z M13.5,5.8c-3.3,1.9-2.7,11.3,3.6,22.2	c6.3,10.9,14.1,16.1,17.4,14.2c1.7-1,2.3-3.8,1.8-7.8c-0.6-4.3-2.5-9.4-5.4-14.4C24.6,9.1,16.8,3.9,13.5,5.8L13.5,5.8z"></path><circle cx="24" cy="24" r="4" fill="#80deea"></circle>
                     </svg>
                     <span>React.js</span>
                 </li>
-                <li class="flex items-center space-x-2 bg-cyan-500/25 text-center px-4 py-2 rounded-full">
+                <li class="flex items-center space-x-2 bg-sky-400/25 text-center px-4 py-2 rounded-full transition-transform transform hover:scale-105 hover:bg-sky-500/50">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48">
                         <path fill="#80deea" d="M24,34C11.1,34,1,29.6,1,24c0-5.6,10.1-10,23-10c12.9,0,23,4.4,23,10C47,29.6,36.9,34,24,34z M24,16	c-12.6,0-21,4.1-21,8c0,3.9,8.4,8,21,8s21-4.1,21-8C45,20.1,36.6,16,24,16z"></path><path fill="#80deea" d="M15.1,44.6c-1,0-1.8-0.2-2.6-0.7C7.6,41.1,8.9,30.2,15.3,19l0,0c3-5.2,6.7-9.6,10.3-12.4c3.9-3,7.4-3.9,9.8-2.5	c2.5,1.4,3.4,4.9,2.8,9.8c-0.6,4.6-2.6,10-5.6,15.2c-3,5.2-6.7,9.6-10.3,12.4C19.7,43.5,17.2,44.6,15.1,44.6z M32.9,5.4	c-1.6,0-3.7,0.9-6,2.7c-3.4,2.7-6.9,6.9-9.8,11.9l0,0c-6.3,10.9-6.9,20.3-3.6,22.2c1.7,1,4.5,0.1,7.6-2.3c3.4-2.7,6.9-6.9,9.8-11.9	c2.9-5,4.8-10.1,5.4-14.4c0.5-4-0.1-6.8-1.8-7.8C34,5.6,33.5,5.4,32.9,5.4z"></path><path fill="#80deea" d="M33,44.6c-5,0-12.2-6.1-17.6-15.6C8.9,17.8,7.6,6.9,12.5,4.1l0,0C17.4,1.3,26.2,7.8,32.7,19	c3,5.2,5,10.6,5.6,15.2c0.7,4.9-0.3,8.3-2.8,9.8C34.7,44.4,33.9,44.6,33,44.6z M13.5,5.8c-3.3,1.9-2.7,11.3,3.6,22.2	c6.3,10.9,14.1,16.1,17.4,14.2c1.7-1,2.3-3.8,1.8-7.8c-0.6-4.3-2.5-9.4-5.4-14.4C24.6,9.1,16.8,3.9,13.5,5.8L13.5,5.8z"></path><circle cx="24" cy="24" r="4" fill="#80deea"></circle>
                     </svg>
                     <span>React Native</span>
                 </li>
-                <li class="flex items-center space-x-2 bg-cyan-500/25 text-center px-4 py-2 rounded-full">
+                <li class="flex items-center space-x-2 bg-sky-400/25 text-center px-4 py-2 rounded-full transition-transform transform hover:scale-105 hover:bg-sky-500/50">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 128 128">
                         <defs>
                             <linearGradient id="a" x1="882.997" x2="638.955" y1="27.113" y2="866.902" gradientTransform="scale(.1)" gradientUnits="userSpaceOnUse">
@@ -85,31 +97,31 @@
                     </svg>
                     <span>Astro</span>
                 </li>
-                <li class="flex items-center space-x-2 bg-cyan-500/25 text-center px-4 py-2 rounded-full">
+                <li class="flex items-center space-x-2 bg-sky-400/25 text-center px-4 py-2 rounded-full transition-transform transform hover:scale-105 hover:bg-sky-500/50">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48">
                         <path fill="#ffd600" d="M6,42V6h36v36H6z"></path><path fill="#000001" d="M29.538 32.947c.692 1.124 1.444 2.201 3.037 2.201 1.338 0 2.04-.665 2.04-1.585 0-1.101-.726-1.492-2.198-2.133l-.807-.344c-2.329-.988-3.878-2.226-3.878-4.841 0-2.41 1.845-4.244 4.728-4.244 2.053 0 3.528.711 4.592 2.573l-2.514 1.607c-.553-.988-1.151-1.377-2.078-1.377-.946 0-1.545.597-1.545 1.377 0 .964.6 1.354 1.985 1.951l.807.344C36.452 29.645 38 30.839 38 33.523 38 36.415 35.716 38 32.65 38c-2.999 0-4.702-1.505-5.65-3.368L29.538 32.947zM17.952 33.029c.506.906 1.275 1.603 2.381 1.603 1.058 0 1.667-.418 1.667-2.043V22h3.333v11.101c0 3.367-1.953 4.899-4.805 4.899-2.577 0-4.437-1.746-5.195-3.368L17.952 33.029z"></path>
                     </svg>
                     <span>JavaScript</span>
                 </li>
-                <li class="flex items-center space-x-2 bg-cyan-500/25 text-center px-4 py-2 rounded-full">
+                <li class="flex items-center space-x-2 bg-sky-400/25 text-center px-4 py-2 rounded-full transition-transform transform hover:scale-105 hover:bg-sky-500/50">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48">
                         <path fill="#E65100" d="M41,5H7l3,34l14,4l14-4L41,5L41,5z"></path><path fill="#FF6D00" d="M24 8L24 39.9 35.2 36.7 37.7 8z"></path><path fill="#FFF" d="M24,25v-4h8.6l-0.7,11.5L24,35.1v-4.2l4.1-1.4l0.3-4.5H24z M32.9,17l0.3-4H24v4H32.9z"></path><path fill="#EEE" d="M24,30.9v4.2l-7.9-2.6L15.7,27h4l0.2,2.5L24,30.9z M19.1,17H24v-4h-9.1l0.7,12H24v-4h-4.6L19.1,17z"></path>
                     </svg>
                     <span>HTML</span>
                 </li>
-                <li class="flex items-center space-x-2 bg-cyan-500/25 text-center px-4 py-2 rounded-full">
+                <li class="flex items-center space-x-2 bg-sky-400/25 text-center px-4 py-2 rounded-full transition-transform transform hover:scale-105 hover:bg-sky-500/50">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48">
                         <path fill="#0277BD" d="M41,5H7l3,34l14,4l14-4L41,5L41,5z"></path><path fill="#039BE5" d="M24 8L24 39.9 35.2 36.7 37.7 8z"></path><path fill="#FFF" d="M33.1 13L24 13 24 17 28.9 17 28.6 21 24 21 24 25 28.4 25 28.1 29.5 24 30.9 24 35.1 31.9 32.5 32.6 21 32.6 21z"></path><path fill="#EEE" d="M24,13v4h-8.9l-0.3-4H24z M19.4,21l0.2,4H24v-4H19.4z M19.8,27h-4l0.3,5.5l7.9,2.6v-4.2l-4.1-1.4L19.8,27z"></path>
                     </svg>
                     <span>CSS</span>
                 </li>
-                <li class="flex items-center space-x-2 bg-cyan-500/25 text-center px-4 py-2 rounded-full">
+                <li class="flex items-center space-x-2 bg-sky-400/25 text-center px-4 py-2 rounded-full transition-transform transform hover:scale-105 hover:bg-sky-500/50">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 80 80">
                         <path fill="#dcd5f2" d="M40,61.5C18.22,61.5,0.5,51.855,0.5,40S18.22,18.5,40,18.5S79.5,28.145,79.5,40S61.78,61.5,40,61.5z"></path><path fill="#8b75a1" d="M40,19c21.505,0,39,9.421,39,21S61.505,61,40,61S1,51.579,1,40S18.495,19,40,19 M40,18 C17.909,18,0,27.85,0,40s17.909,22,40,22s40-9.85,40-22S62.091,18,40,18L40,18z"></path><path fill="#36404d" d="M25.112 34c1.725 0 3.214.622 4.084 1.706.749.934.981 2.171.668 3.577C29.023 43.074 27.395 44 21.57 44h-4.14l1.75-10H25.112M25.112 32H17.5L14 52h2l1.056-6h4.515c5.863 0 9.053-.905 10.246-6.284C32.842 35.096 29.436 32 25.112 32L25.112 32zM61.112 34c1.725 0 3.214.622 4.084 1.706.749.934.981 2.171.668 3.577C65.023 43.074 63.395 44 57.57 44h-4.14l1.75-10H61.112M61.112 32H53.5L50 52h2l1.056-6h4.515c5.863 0 9.053-.905 10.246-6.284C68.842 35.096 65.436 32 61.112 32L61.112 32z"></path><g><path fill="#36404d" d="M49.072,33.212C48.193,32.348,46.644,32,44.334,32h-5.538L40,26h-2.1L34,46h1.99l2.388-12h0.419 h5.538c2.338,0,3.094,0.4,3.335,0.637c0.343,0.338,0.424,1.226,0.217,2.363l-1.767,9h2.106l1.626-8.63 C50.199,35.462,49.936,34.062,49.072,33.212z"></path></g>
                     </svg>
                     <span>PHP</span>
                 </li>
-                <li class="flex items-center space-x-2 bg-cyan-500/25 text-center px-4 py-2 rounded-full">
+                <li class="flex items-center space-x-2 bg-sky-400/25 text-center px-4 py-2 rounded-full transition-transform transform hover:scale-105 hover:bg-sky-500/50">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48">
                         <path fill="#006064" d="M47.776,8.156c-0.13-0.107-0.296-0.163-0.465-0.156c-0.463,0-1.062,0.314-1.385,0.483l-0.128,0.065 c-0.541,0.262-1.13,0.41-1.73,0.435c-0.615,0.02-1.146,0.056-1.836,0.128c-4.091,0.421-5.916,3.556-7.674,6.589 c-0.957,1.65-1.946,3.363-3.301,4.672c-0.28,0.272-0.578,0.525-0.892,0.758c-1.402,1.042-3.163,1.787-4.533,2.314 c-1.319,0.504-2.759,0.957-4.15,1.396c-1.275,0.401-2.478,0.781-3.584,1.191c-0.499,0.185-0.923,0.327-1.298,0.452 c-1.008,0.327-1.735,0.578-2.797,1.309c-0.414,0.283-0.83,0.589-1.111,0.818c-0.843,0.673-1.589,1.459-2.217,2.335 c-0.54,0.809-1.164,1.558-1.862,2.235c-0.224,0.219-0.622,0.327-1.218,0.327C6.899,33.509,4.984,33,3.699,33 C1.987,33,0.208,33.627,0,34c0,0,2.911,1.894,3.014,1.996c-0.111,0.164-1.818,2.503-2.002,3.011 c2.494,0.063,3.956-0.306,5.356-0.983c0.406-0.196,0.818-0.398,1.309-0.605c0.818-0.355,1.699-0.921,2.633-1.52 c1.222-0.797,2.501-1.615,3.741-2.01c1.019-0.311,2.081-0.46,3.147-0.442c1.309,0,2.687,0.175,4.016,0.345 c0.99,0.128,2.78,0.148,3.786,0.208c0.269,0.016,1.84,0.034,2.946,0.027C26.758,36.642,25,39,25,39s6,0,8.548-5.781 c0.034-0.067,0.063-0.136,0.096-0.203c1.58-0.377,5.63-2.513,6.706-8.405c0.504-1.712,0.874-3.412,1.2-4.909 c0.389-1.8,0.725-3.343,1.109-3.942c0.604-0.939,1.525-1.574,2.417-2.191c0.121-0.083,0.244-0.164,0.363-0.252 c1.121-0.787,2.235-1.695,2.481-3.389V9.889C48.098,8.626,47.948,8.303,47.776,8.156z"></path>
                     </svg>
@@ -121,43 +133,43 @@
 
     <main class="space-y-8 p-8 max-w-6xl mx-auto">
         <section>
-            <h2 class="text-3xl font-semibold mb-6 text-violet-500">Experiencia</h2>
+            <h2 class="text-3xl font-semibold mb-6 text-sky-400 opacity-75">Experiencia</h2>
             <article class="bg-gray-900 p-6 mb-6 rounded-lg shadow-lg flex flex-col sm:flex-row items-start">
                 <div class="flex-shrink-0 mb-4 sm:mb-0">
-                    <img src="resources/paynopain.webp" alt="Descripción de la imagen 1" class="w-60 h-auto rounded-lg">
+                    <img src="resources/paynopain.webp" alt="Checkout de Paynopain" class="h-auto rounded-lg transition-transform transform hover:scale-150 z-10 relative" width="200" height="200">
                 </div>
                 <div class="ml-0 sm:ml-6">
-                    <h3 class="text-xl font-semibold mb-4">Full-stack web developer <strong class="text-cyan-500">@Paynopain</strong> <em>2020-2024</em></h3>
+                    <h3 class="text-xl font-semibold mb-4">Full-stack web developer <strong class="text-sky-400">@Paynopain</strong> <em>2020-2024</em></h3>
                     <ul class="list-disc list-inside space-y-4 opacity-60">
-                        <li>Desarrollé una página de checkout en <strong class="text-cyan-500">JavaScript</strong>, integrando métodos de pago globales como <strong class="text-cyan-500">Apple Pay</strong> y <strong class="text-cyan-500">Google Pay</strong>.</li>
-                        <li>Creé un SDK en <strong class="text-cyan-500">JavaScript</strong> para la integración directa de múltiples métodos de pago.</li>
-                        <li>Colaboré con <strong class="text-cyan-500">VISA</strong> y <strong class="text-cyan-500">Mastercard</strong> en la integración de su solución de pagos <strong class="text-cyan-500">ClicktoPay</strong>.</li>
-                        <li>Desarrollé y realicé revisiones de código de un portal web en <strong class="text-cyan-500">React</strong>.</li>
+                        <li>Desarrollé una página de checkout en <strong class="text-sky-400">JavaScript</strong>, integrando métodos de pago globales como <strong class="text-sky-400">Apple Pay</strong> y <strong class="text-sky-400">Google Pay</strong>.</li>
+                        <li>Creé un SDK en <strong class="text-sky-400">JavaScript</strong> para la integración directa de múltiples métodos de pago.</li>
+                        <li>Colaboré con <strong class="text-sky-400">VISA</strong> y <strong class="text-sky-400">Mastercard</strong> en la integración de su solución de pagos <strong class="text-sky-400">ClicktoPay</strong>.</li>
+                        <li>Desarrollé y realicé revisiones de código de un portal web en <strong class="text-sky-400">React</strong>.</li>
                     </ul>
                 </div>
             </article>
             <article class="bg-gray-900 p-6 mb-6 rounded-lg shadow-lg flex flex-col sm:flex-row items-start">
                 <div class="flex-shrink-0 mb-4 sm:mb-0">
-                    <img src="resources/takeachef.webp" alt="Descripción de la imagen 2" class="w-60 h-auto rounded-lg">
+                    <img src="resources/takeachef.webp" alt="Web de Takeachef" class="h-auto rounded-lg transition-transform transform hover:scale-150 z-10 relative" width="200" height="200">
                 </div>
                 <div class="ml-0 sm:ml-6">
-                    <h3 class="text-xl font-semibold mb-4">Web developer <strong class="text-cyan-500">@Takeachef</strong> <em>2019-2020</em></h3>
+                    <h3 class="text-xl font-semibold mb-4">Web developer <strong class="text-sky-400">@Takeachef</strong> <em>2019-2020</em></h3>
                     <ul class="list-disc list-inside space-y-4 opacity-60">
-                        <li>Desarrollé un portal web en <strong class="text-cyan-500">Symfony</strong> con <strong class="text-cyan-500">Twig</strong> y <strong class="text-cyan-500">jQuery</strong>.</li>
-                        <li>Integré <strong class="text-cyan-500">Selenium/Behat</strong> como framework de testing.</li>
+                        <li>Desarrollé un portal web en <strong class="text-sky-400">Symfony</strong> con <strong class="text-sky-400">Twig</strong> y <strong class="text-sky-400">jQuery</strong>.</li>
+                        <li>Integré <strong class="text-sky-400">Selenium/Behat</strong> como framework de testing.</li>
                     </ul>
                 </div>
             </article>
             <article class="bg-gray-900 p-6 rounded-lg shadow-lg">
-                <h3 class="text-xl font-semibold mb-4">Mobile Android developer <strong class="text-cyan-500">@Easygoband</strong> <em>2018</em></h3>
+                <h3 class="text-xl font-semibold mb-4">Mobile Android developer <strong class="text-sky-400">@Easygoband</strong> <em>2018</em></h3>
                 <ul class="list-disc list-inside space-y-4 opacity-60">
-                    <li>Desarrollé una app de gestión de eventos en <strong class="text-cyan-500">Kotlin</strong>.</li>
+                    <li>Desarrollé una app de gestión de eventos en <strong class="text-sky-400">Kotlin</strong>.</li>
                 </ul>
             </article>
         </section>
 
         <section>
-            <h2 class="text-3xl font-semibold mb-6 text-violet-500">Estudios</h2>
+            <h2 class="text-3xl font-semibold mb-6 text-sky-400 opacity-75">Estudios</h2>
             <ul class="list-disc list-inside space-y-4 opacity-60">
                 <li>CFGS Desarrollo de Aplicaciones Web</li>
                 <li>CFGS Desarrollo de Aplicaciones Multiplataforma</li>
@@ -165,10 +177,10 @@
         </section>
 
         <section>
-            <h2 class="text-3xl font-semibold mb-6 text-violet-500">Habilidades</h2>
+            <h2 class="text-3xl font-semibold mb-6 text-sky-400 opacity-75">Habilidades</h2>
             <ul class="list-disc list-inside space-y-4 opacity-60">
                 <li>Desarrollo de aplicaciones web y móvil de 0 a producción</li>
-                <li>Dominio de <strong class="text-cyan-500">TDD</strong>, <strong class="text-cyan-500">Git</strong>, principios <strong class="text-cyan-500">SOLID</strong> y buenas prácticas</li>
+                <li>Dominio de <strong class="text-sky-400">TDD</strong>, <strong class="text-sky-400">Git</strong>, principios <strong class="text-sky-400">SOLID</strong> y buenas prácticas</li>
                 <li>Experiencia en trato con clientes y colaboradores externos</li>
                 <li>Trabajo en equipo y capacidad de mejora</li>
                 <li>Español y valenciano nativos. Inglés medio/alto</li>
@@ -176,12 +188,12 @@
         </section>
     </main>
 
-    <footer class="bg-cyan-500/25">
+    <footer class="bg-sky-400/25">
         <section class="flex flex-col md:flex-row justify-between items-center p-8 max-w-6xl mx-auto">
             <address class="not-italic space-y-4 mb-4 md:mb-0 flex-1 opacity-75">
                 <ul class="space-y-4">
                     <li class="flex items-center space-x-2">
-                        <a href="mailto:miguelmarquezblasco@gmail.com" class="text-cyan-500 hover:text-white">
+                        <a href="mailto:miguelmarquezblasco@gmail.com" class="text-sky-400 hover:text-white transition-transform transform hover:scale-150">
                             <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 48 48">
                                 <linearGradient id="NvW_RwTAona1rlOp72mkqa_7rhqrO588QcU_gr1" x1="24" x2="24" y1="42" y2="6.207" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#1ac8fc"></stop><stop offset=".258" stop-color="#1bb6fa"></stop><stop offset=".775" stop-color="#1c86f5"></stop><stop offset="1" stop-color="#1d70f2"></stop></linearGradient><path fill="url(#NvW_RwTAona1rlOp72mkqa_7rhqrO588QcU_gr1)" d="M34,42H14c-4.411,0-8-3.589-8-8V14c0-4.411,3.589-8,8-8h20c4.411,0,8,3.589,8,8v20 C42,38.411,38.411,42,34,42z"></path><path d="M34,16c0.178,0,0.347,0.031,0.512,0.074l-7.824,7.825C25.946,24.64,24.973,25.01,24,25.01 s-1.946-0.37-2.688-1.111l-7.824-7.825C13.653,16.031,13.822,16,14,16H34 M35.926,17.488C35.969,17.653,36,17.822,36,18v12 c0,0.178-0.031,0.347-0.074,0.512L29.414,24L35.926,17.488 M12.074,17.488L18.586,24l-6.511,6.511C12.031,30.347,12,30.178,12,30 V18C12,17.822,12.031,17.653,12.074,17.488 M27.99,25.404l6.522,6.522C34.347,31.969,34.178,32,34,32H14 c-0.178,0-0.347-0.031-0.512-0.074l6.522-6.522c1.117,1.063,2.55,1.605,3.99,1.605S26.873,26.467,27.99,25.404 M34,15H14 c-0.244,0-0.495,0.035-0.768,0.108c-0.346,0.092-0.616,0.361-0.709,0.707c-0.092,0.341,0.003,0.704,0.248,0.956 c-0.189-0.183-0.44-0.283-0.697-0.283c-0.087,0-0.174,0.011-0.26,0.034c-0.345,0.093-0.615,0.363-0.707,0.709 C11.035,17.505,11,17.756,11,18v12c0,0.244,0.035,0.495,0.108,0.768c0.092,0.346,0.361,0.616,0.707,0.709 c0.086,0.023,0.173,0.034,0.26,0.034c0.257,0,0.508-0.099,0.696-0.282c-0.245,0.253-0.34,0.616-0.248,0.956 c0.093,0.345,0.363,0.615,0.709,0.707C13.505,32.965,13.756,33,14,33h20c0.244,0,0.495-0.035,0.768-0.108 c0.346-0.092,0.616-0.361,0.709-0.707c0.092-0.341-0.003-0.704-0.248-0.956c0.189,0.183,0.44,0.282,0.696,0.282 c0.087,0,0.174-0.011,0.26-0.034c0.345-0.093,0.615-0.363,0.707-0.709C36.965,30.495,37,30.244,37,30V18 c0-0.244-0.035-0.495-0.108-0.768c-0.092-0.346-0.361-0.616-0.707-0.709c-0.086-0.023-0.173-0.034-0.26-0.034 c-0.257,0-0.508,0.099-0.697,0.282c0.245-0.253,0.34-0.616,0.248-0.956c-0.093-0.345-0.363-0.615-0.709-0.707 C34.495,15.035,34.244,15,34,15L34,15z" opacity=".05"></path><path d="M34,15.5H14c-0.203,0-0.406,0.029-0.64,0.091c-0.173,0.046-0.308,0.181-0.354,0.353 c-0.046,0.173,0.003,0.357,0.129,0.483l7.824,7.825C21.77,25.063,22.85,25.51,24,25.51s2.23-0.447,3.041-1.257l7.824-7.825 c0.126-0.126,0.176-0.311,0.129-0.483c-0.046-0.173-0.182-0.307-0.354-0.353C34.406,15.529,34.203,15.5,34,15.5L34,15.5z M35.926,16.988c-0.131,0-0.259,0.051-0.354,0.146l-6.511,6.512c-0.195,0.195-0.195,0.512,0,0.707l6.511,6.511 c0.095,0.095,0.223,0.146,0.354,0.146c0.043,0,0.087-0.006,0.13-0.017c0.173-0.046,0.307-0.182,0.353-0.354 C36.471,30.406,36.5,30.203,36.5,30V18c0-0.203-0.029-0.406-0.091-0.64c-0.046-0.173-0.181-0.308-0.353-0.354 C36.013,16.994,35.969,16.988,35.926,16.988L35.926,16.988z M12.074,16.988c-0.043,0-0.087,0.006-0.13,0.017 c-0.173,0.046-0.307,0.182-0.353,0.354C11.529,17.594,11.5,17.797,11.5,18v12c0,0.203,0.029,0.406,0.091,0.64 c0.046,0.173,0.181,0.308,0.353,0.354c0.043,0.012,0.087,0.017,0.13,0.017c0.131,0,0.259-0.051,0.354-0.146l6.511-6.511 c0.195-0.195,0.195-0.512,0-0.707l-6.511-6.512C12.333,17.04,12.205,16.988,12.074,16.988L12.074,16.988z M27.99,24.904 c-0.124,0-0.248,0.046-0.345,0.138c-0.995,0.946-2.289,1.467-3.645,1.467s-2.651-0.521-3.645-1.467 c-0.097-0.092-0.221-0.138-0.345-0.138c-0.128,0-0.256,0.049-0.354,0.146l-6.522,6.522c-0.126,0.126-0.176,0.311-0.129,0.483 s0.182,0.307,0.354,0.353C13.594,32.471,13.797,32.5,14,32.5h20c0.203,0,0.406-0.029,0.64-0.091 c0.173-0.046,0.308-0.181,0.354-0.353s-0.003-0.357-0.129-0.483l-6.522-6.522C28.246,24.953,28.118,24.904,27.99,24.904 L27.99,24.904z" opacity=".07"></path><path fill="#f9f9f9" d="M35.926,17.488L29.414,24l6.511,6.511C35.969,30.347,36,30.178,36,30V18 C36,17.822,35.969,17.653,35.926,17.488z M26.688,23.899l7.824-7.825C34.347,16.031,34.178,16,34,16H14 c-0.178,0-0.347,0.031-0.512,0.074l7.824,7.825C22.795,25.38,25.205,25.38,26.688,23.899z M12.074,17.488 C12.031,17.653,12,17.822,12,18v12c0,0.178,0.031,0.347,0.074,0.512L18.586,24L12.074,17.488z M24,27.009 c-1.44,0-2.873-0.542-3.99-1.605l-6.522,6.522C13.653,31.969,13.822,32,14,32h20c0.178,0,0.347-0.031,0.512-0.074l-6.522-6.522 C26.873,26.467,25.44,27.009,24,27.009z"></path>
                             </svg>
@@ -189,7 +201,7 @@
                         <span>miguelmarquezblasco@gmail.com</span>
                     </li>
                     <li class="flex items-center space-x-2">
-                        <a href="https://wa.me/34655964249" class="text-cyan-500 hover:text-white">
+                        <a href="https://wa.me/34655964249" class="text-sky-400 hover:text-white transition-transform transform hover:scale-150">
                             <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 48 48">
                                 <path fill="#fff" d="M4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98c-0.001,0,0,0,0,0h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303z"></path><path fill="#fff" d="M4.868,43.803c-0.132,0-0.26-0.052-0.355-0.148c-0.125-0.127-0.174-0.312-0.127-0.483l2.639-9.636c-1.636-2.906-2.499-6.206-2.497-9.556C4.532,13.238,13.273,4.5,24.014,4.5c5.21,0.002,10.105,2.031,13.784,5.713c3.679,3.683,5.704,8.577,5.702,13.781c-0.004,10.741-8.746,19.48-19.486,19.48c-3.189-0.001-6.344-0.788-9.144-2.277l-9.875,2.589C4.953,43.798,4.911,43.803,4.868,43.803z"></path><path fill="#cfd8dc" d="M24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,4C24.014,4,24.014,4,24.014,4C12.998,4,4.032,12.962,4.027,23.979c-0.001,3.367,0.849,6.685,2.461,9.622l-2.585,9.439c-0.094,0.345,0.002,0.713,0.254,0.967c0.19,0.192,0.447,0.297,0.711,0.297c0.085,0,0.17-0.011,0.254-0.033l9.687-2.54c2.828,1.468,5.998,2.243,9.197,2.244c11.024,0,19.99-8.963,19.995-19.98c0.002-5.339-2.075-10.359-5.848-14.135C34.378,6.083,29.357,4.002,24.014,4L24.014,4z"></path><path fill="#40c351" d="M35.176,12.832c-2.98-2.982-6.941-4.625-11.157-4.626c-8.704,0-15.783,7.076-15.787,15.774c-0.001,2.981,0.833,5.883,2.413,8.396l0.376,0.597l-1.595,5.821l5.973-1.566l0.577,0.342c2.422,1.438,5.2,2.198,8.032,2.199h0.006c8.698,0,15.777-7.077,15.78-15.776C39.795,19.778,38.156,15.814,35.176,12.832z"></path><path fill="#fff" fill-rule="evenodd" d="M19.268,16.045c-0.355-0.79-0.729-0.806-1.068-0.82c-0.277-0.012-0.593-0.011-0.909-0.011c-0.316,0-0.83,0.119-1.265,0.594c-0.435,0.475-1.661,1.622-1.661,3.956c0,2.334,1.7,4.59,1.937,4.906c0.237,0.316,3.282,5.259,8.104,7.161c4.007,1.58,4.823,1.266,5.693,1.187c0.87-0.079,2.807-1.147,3.202-2.255c0.395-1.108,0.395-2.057,0.277-2.255c-0.119-0.198-0.435-0.316-0.909-0.554s-2.807-1.385-3.242-1.543c-0.435-0.158-0.751-0.237-1.068,0.238c-0.316,0.474-1.225,1.543-1.502,1.859c-0.277,0.317-0.554,0.357-1.028,0.119c-0.474-0.238-2.002-0.738-3.815-2.354c-1.41-1.257-2.362-2.81-2.639-3.285c-0.277-0.474-0.03-0.731,0.208-0.968c0.213-0.213,0.474-0.554,0.712-0.831c0.237-0.277,0.316-0.475,0.474-0.791c0.158-0.317,0.079-0.594-0.04-0.831C20.612,19.329,19.69,16.983,19.268,16.045z" clip-rule="evenodd"></path>
                             </svg>
@@ -197,7 +209,7 @@
                         <span>+34 655 96 42 49</span>
                     </li>
                     <li class="flex items-center space-x-2">
-                        <a href="https://linkedin.com/in/miguelmarquezblasco" class="text-cyan-500 hover:text-white">
+                        <a href="https://linkedin.com/in/miguelmarquezblasco" class="text-sky-400 hover:text-white transition-transform transform hover:scale-150">
                             <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 48 48">
                                 <path fill="#0288D1" d="M42,37c0,2.762-2.238,5-5,5H11c-2.761,0-5-2.238-5-5V11c0-2.762,2.239-5,5-5h26c2.762,0,5,2.238,5,5V37z"></path><path fill="#FFF" d="M12 19H17V36H12zM14.485 17h-.028C12.965 17 12 15.888 12 14.499 12 13.08 12.995 12 14.514 12c1.521 0 2.458 1.08 2.486 2.499C17 15.887 16.035 17 14.485 17zM36 36h-5v-9.099c0-2.198-1.225-3.698-3.192-3.698-1.501 0-2.313 1.012-2.707 1.99C24.957 25.543 25 26.511 25 27v9h-5V19h5v2.616C25.721 20.5 26.85 19 29.738 19c3.578 0 6.261 2.25 6.261 7.274L36 36 36 36z"></path>
                             </svg>
@@ -219,7 +231,7 @@
                     </li>
                 </ul>
             </address>
-            <a href="resources/miguel_marquez_blasco_cv.pdf" download class="bg-violet-500 text-white px-4 py-2 rounded-lg hover:bg-cyan-600 mt-4 md:mt-0">
+            <a href="resources/miguel_marquez_blasco_cv.pdf" download class="bg-sky-400 text-white px-4 py-2 rounded-lg hover:bg-gray-600 mt-4 md:mt-0 transition-transform transform hover:scale-105">
                 Descargar CV en PDF
             </a>    
         </section>
