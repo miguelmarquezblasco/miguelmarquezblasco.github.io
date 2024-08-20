@@ -73,7 +73,12 @@
             <h1 class="text-4xl font-bold gradient-underline relative inline-block">
                 Hola! Soy <span class="gradient-underline">Miguel</span>
             </h1>
-            <p class="text-lg opacity-70">+5 años de experiencia como desarrollador full-stack</p>
+            <p class="text-lg opacity-70">
+                <script>
+                    const yearsOfExperience = new Date().getFullYear() - 2019
+                    document.querySelector('aside p').textContent = `+${yearsOfExperience} años de experiencia como desarrollador full-stack`
+                </script>
+            </p>
             <ul class="flex flex-wrap justify-center gap-4 pt-6 max-w-4xl">
                 <li>
                     <a href="https://www.linkedin.com/in/miguel-marquez-blasco/" target="_blank" aria-label="https://www.linkedin.com/in/miguel-marquez-blasco/" class="flex items-center space-x-2 border border-sky-400/25 text-center px-4 py-2 rounded-full transition-transform transform hover:scale-110 hover:border-sky-500/50 hover:bg-transparent cursor-pointer">
@@ -126,7 +131,7 @@
                 </div>
                 <div class="ml-0 sm:ml-6">
                     <h3 class="text-xl font-semibold mb-4">Grupo de Rescates y Adopciones de Castellón</h3>
-                    <div class="list-disc list-inside space-y-4 opacity-70">
+                    <div class="list-disc list-inside space-y-4">
                         <p class="space-y-4 opacity-70 mb-4">
                             Página web del G.R.A. de Castellón, asociación sin ánimo de lucro dedicada a rescatar animales y darles un nuevo hogar.
                         </p>
@@ -276,7 +281,7 @@
                 <li>Dominio de <strong class="text-sky-400">TDD</strong>, <strong class="text-sky-400">Git</strong>, principios <strong class="text-sky-400">SOLID</strong> y buenas prácticas</li>
                 <li>Experiencia en trato con clientes y colaboradores externos</li>
                 <li>Trabajo en equipo y capacidad de mejora</li>
-                <li>Español y valenciano nativos. Inglés medio/alto</li>
+                <li><strong class="text-sky-400">Español</strong> y <strong class="text-sky-400">valenciano</strong> nativos. <strong class="text-sky-400">Inglés</strong> B2</li>
             </ul>
         </section>
     </main>
