@@ -31,6 +31,14 @@
             transform: scaleX(1.2);
         }
 
+        .video-fade video {
+            pointer-events: none;
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .video-fade::after {
             content: '';
             position: absolute;
@@ -58,7 +66,7 @@
 <body class="bg-gray-950 text-white font-sans">
     <header class="relative h-screen flex justify-center items-center px-4 lg:px-8">
         <div class="video-fade">
-            <video autoplay loop muted disablepictureinpicture disableremoteplayback src="resources/background.webm" class="absolute inset-0 w-full h-full object-cover opacity-90 transition-opacity duration-500 ease-in-out hover:opacity-75" aria-hidden="true"></video>
+            <video autoplay loop muted playsinline preload="auto" disablepictureinpicture disableremoteplayback src="resources/background.webm" class="absolute inset-0 w-full h-full object-cover opacity-90 transition-opacity duration-500 ease-in-out hover:opacity-75" aria-hidden="true"></video>
         </div>
         <aside class="relative z-10 text-center space-y-4 animate__animated animate__fadeIn">
             <img src="resources/profile.webp" alt="Foto de Miguel Márquez Blasco" class="rounded-full mx-auto transition-transform transform hover:scale-110" width="214" height="214">
